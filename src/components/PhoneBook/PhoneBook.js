@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+import { connect } from 'react-redux';
 import withTheme from '../hoc/withTheme';
+import contactActions from '../../redux/contacts/contactsActions';
 import PropTypes from 'prop-types';
 import styles from './PhoneBook.module.css';
 
@@ -94,4 +96,8 @@ class PhoneBook extends Component {
   }
 }
 
-export default withTheme(PhoneBook);
+const mapDispatchToProps = {
+  onAddContact: contactActions.addContact,
+};
+
+export default connect(null, mapDispatchToProps)(withTheme(PhoneBook));
